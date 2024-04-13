@@ -1,5 +1,11 @@
 import { type Page, expect, test } from "@playwright/test";
 
+type Todo = {
+  id: string;
+  title: string;
+  completed: boolean;
+};
+
 test.beforeEach(async ({ page }) => {
   await page.goto("https://demo.playwright.dev/todomvc");
 });
@@ -474,7 +480,7 @@ async function checkNumberOfCompletedTodosInLocalStorage(
   return await page.waitForFunction((e) => {
     return (
       JSON.parse(localStorage["react-todos"]).filter(
-        (todo: any) => todo.completed,
+        (todo: Todo) => todo.completed,
       ).length === e
     );
   }, expected);
@@ -483,7 +489,7 @@ async function checkNumberOfCompletedTodosInLocalStorage(
 async function checkTodosInLocalStorage(page: Page, title: string) {
   return await page.waitForFunction((t) => {
     return JSON.parse(localStorage["react-todos"])
-      .map((todo: any) => todo.title)
+      .map((todo: Todo) => todo.title)
       .includes(t);
   }, title);
 }
