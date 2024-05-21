@@ -1,15 +1,12 @@
 {
   "name": "playwright-typescript-pom",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {},
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@biomejs/biome": "1.6.4",
     "@playwright/test": "^1.43.0",
     "@types/node": "^20.12.7"
+  },
+  "volta": {
+    "node": "22.2.0",
+    "npm": "10.8.0"
   }
 }
